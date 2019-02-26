@@ -1,0 +1,109 @@
+<section id="banner" style="background: url(../img/intro-noticia.jpg) center center !important;background-size:cover !important">
+    <div class="inner">
+        <header>
+            <h2 style="color: white; font-weight: bold">Agregar Noticia</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/registro/guardarNoticia' enctype="multipart/form-data">
+
+            <br>
+            <div class="wrap-input100 validate-input" data-validate=" Ingrese el Titulo">
+                <span class="label-input100">Titulo</span>
+                <br>
+                <input class="combo" type="text" name="titulo" >
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese el genero">
+                <span class="label-input100">Tipo Multimedia</span>
+                <br>
+                <select class="combo" name="multimedia" id="tipoMult" onchange="OnChange()">
+                    <option class="in2">-- Tipo de Multimedia --</option>
+                    <option class="in2" value='1'>Video</option>
+                    <option class="in2" value='0'>Imagen</option>
+
+                </select>
+            </div><br>
+            <div id= 'video' class="wrap-input100 validate-input hidden" data-validate=" Ingrese el link" >
+                <span class="label-input100">Coloca el link del Video</span>
+                <br>
+                <input class="combo" type="url" name="video" placeholder="URL multimedia">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+                <br>
+            </div>
+            <div data-validate=" Ingrese el link" class ='hidden' id='foto'>
+                <label  for="archivo" class="lab">
+                    <span>Agregar Foto</span>
+                    <input type="file" id="archivo" name="archivo" style="display:none">
+                </label>
+                <br><br><br>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate=" Ingrese la descripcion" >
+                <span class="label-input100" >Descripcion</span>
+                <br>
+                <textarea class="combo" name="descripcion"  rows="4"></textarea>
+            </div>
+
+            <br>
+            <br>
+            <div class="flex-col-c p-t-30">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" >
+                        Registrar
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+</section>
+
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                titulo: {
+                    required: true,
+                    minlength: 3
+                },
+                multimedia: {
+                    required: true
+                },
+                descripcion: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                titulo: {
+                    required: "Ingrese el nombre de la obra",
+                    minlength: "Minimo 3 caracteres"
+                },
+                multimedia: {
+                    required: "Ingrese la url"
+                },
+                descripcion: {
+                    required: "Ingrese su nombre",
+                    minlength: "Minimo 5 caracteres"
+                }
+            }
+        });
+    });
+
+
+    function OnChange() {
+        var tipo = $('#tipoMult').val();
+        if (tipo == 1) {
+            console.log('video');
+            $('#foto').addClass('hidden');
+            $('#video').removeClass('hidden');
+        } else if (tipo == 0) {
+            $('#foto').removeClass('hidden');
+            $('#video').addClass('hidden');
+        } else {
+            $('#foto').addClass('hidden');
+            $('#video').addClass('hidden');
+        }
+    }
+</script>

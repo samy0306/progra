@@ -1,0 +1,163 @@
+<section id="banner" style="background: url(../img/usuario_perfil1.jpg) center center !important;background-size:cover !important">
+    <div class='inner'>
+        <header>
+            <h2 style="color: white; font-weight: bold; margin: 0px !important">Agregar Actor</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro'  method='POST' action='/registro/guardarActor'>
+            <div id="about2" style=' padding: 15px !important'>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Cédula</span>
+                                <input class="combo" type="text" name="cedula" >
+                                <br>
+                            </div>
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Nombre</span>
+                                <input class="combo" type="text" name="nombre" >
+                                <br>
+                            </div>
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Apellido</span>
+                                <input class="combo" type="text" name="apellido" >
+                                <br>
+                            </div>
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Rol</span>
+                                <select class="combo" name="idRol" id="idRol">
+                                    <option class="in2" value="0">- Elegir -</option>
+                                    <option class="in2" value="5">Actor</option>
+                                    <option class="in2" value="3">Asistente</option>
+                                    <option class="in2" value="4">Productor</option>
+                                </select>      
+                            </div>                            <br>                  
+                            <div class="wrap-input100 validate-input" data-validate="Ingrese fecha nacimiento">
+                                <span class="label-input100">Fecha Nacimiento</span>
+                                <input class="combo" type="date" name="fechaNac" placeholder="Fecha Nacimiento">
+                                <span class="focus-input100" data-symbol="&#xf190;"></span>
+                            </div>                            <br>                  
+                            <div class="wrap-input100 validate-input" data-validate="Ingrese su Sexo">
+                                <span class="label-input100">Sexo</span>
+                                <br>
+                                <select class="combo" name="sexo" id="obrsexoa">
+                                    <option class="in2" value="">- Elegir -</option>
+                                    <option class="in2" value="0">Mujer</option>
+                                    <option class="in2" value="1">Hombre</option>
+                                </select>
+                            </div>        
+                            <br>                  
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Direccion</span>
+                                <input class="combo" type="text" name="direccion" >
+                            </div>    
+                            <br>                  
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Correo</span>
+                                <input class="combo" type="text" name="correo" >
+                            </div>   
+                            <br>                  
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Contraseña</span>
+                                <input class="combo" type="password" name="clave" >
+                            </div>     
+                            <br>                  
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Telefono</span>
+                                <input class="combo" type="text" name="telefono" >
+                            </div>   
+                            <br>                  
+                            <div class="wrap-input100 ">
+                                <span class="label-input100">Años Experiencia</span>
+                                <input class="combo" type="text" name="añosExperiencia" >
+                            </div>     
+                            <br>                  
+                        </div>
+                    </div>
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <br>
+                        <button class="login100-form-btn" >
+                            Registrar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>   
+    </div>
+</section>
+
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                cedula: {
+                    required: true,
+                    minlength: 10
+                },
+                apellidos: {
+                    required: true
+                },
+                nombre: {
+                    required: true
+                },
+                direccion: {
+                    required: true,
+                    minlength: 5
+                },
+                correo: {
+                    required: true,
+                    minlength: 10,
+                    email: true
+                },
+                clave: {
+                    required: true,
+                    minlength: 5
+                },
+                telefono: {
+                    required: true,
+                    minlength: 10
+                }
+            },
+            messages: {
+                cedula: {
+                    required: "Ingrese su cedula",
+                    minlength: "Minimo 10 caracteres"
+                },
+                apellidos: {
+                    required: "Ingrese su Apellido"
+                },
+                nombre: {
+                    required: "Ingrese su nombre"
+                },
+                direccion: {
+                    required: "Ingrese su direccion",
+                    minlength: "Minimo 5 caracteres"
+                },
+                correo: {
+                    required: "Ingrese su correo",
+                    minlength: "Minimo 10 caracteres"
+                },
+                clave: {
+                    required: "Ingrese su clave",
+                    minlength: "minimo 5 caracteres"
+                },
+                telefono: {
+                    required: "Ingrese su telefono",
+                    minlength: "Minimo 10 caracteres"
+                }
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+

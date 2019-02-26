@@ -1,0 +1,139 @@
+<section id="banner" style="background: url(../img/intro-reserva.jpg) center center !important;background-size:cover !important">
+    <div class="inner">
+        <header>
+            <h2 style="color: white; font-weight: bold">Registrar Reserva</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/registro/guardarReserva'>
+            <input  class="hidden" type="text"  placeholder="cedula" name="fechahoy" id="fechahoy">
+            <input  class="hidden" type="text"  placeholder="cedula" name="fechaRetiro" id="fechaRetiro">
+            <!--            <div class="wrap-input100 validate-input" data-validate=" Ingrese la fecha">
+                            <span class="label-input100">Fecha Retiro Boletos</span>
+                            <br>
+                            <input class="combo" type="date"  name="fechaRetiro" aria-describedby="fechaHelp" placeholder="Ingrese la fecha">
+                        </div>-->
+            <br>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese el Numero de boletos">
+                <span class="label-input100">Cantidad Boletos</span>
+                <br>
+                <input class="combo" type="number" name="boletos" min="0" max="5" step="1" value="1">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese el nombre de la obra">
+                <span class="label-input100">Obra</span>
+                <br>
+                <select class="combo" name="obra" id="obra">
+                    <!--                    <option class="in2" value="0">- Elegir -</option>-->
+                    {{#each obras}}
+                    <option class="in2" value="{{idObra}}">{{nombre}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <br>
+            <div class="flex-col-c p-t-30">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" >
+                        Registrar
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+</section>
+<script>
+    var p = jQuery.noConflict();
+    p(document).ready(function () {
+        var fechaHoy = new Date();
+        var dias = 3;
+        p("#fechahoy").val(fechaHoy.getFullYear() + "-" + 0 + (fechaHoy.getMonth() + 1) + "-" + fechaHoy.getDate());
+        p("#fechaRetiro").val(fechaHoy.getFullYear() + "-" + 0 + (fechaHoy.getMonth() + 1) + "-" + (fechaHoy.getDate() + 3) * 1);
+    });
+</script>
+<script>
+
+    function calcular() {
+        //la fecha
+        var fechaHoy = new Date();
+
+        //dias a sumar
+//        var dias = parseInt(numero.value);
+        var dias = 3;
+
+        //nueva fecha sumada
+        TuFfechaHoyecha.setDate(fechaHoy.getDate() + dias);
+        //formato de salida para la fecha
+
+        resultado.innerText = fechaHoy.getDate() + '/' +
+                (fechaHoy.getMonth() + 1) + '/' + fechaHoy.getFullYear();
+    }
+</script>
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                nombre: {
+                    required: true,
+                    minlength: 3
+                },
+                multimedia: {
+                    required: true
+                },
+                descripcion: {
+                    required: true,
+                    minlength: 5
+                },
+                genero: {
+                    required: true
+                },
+                autor: {
+                    required: true,
+                    minlength: 5
+                },
+                fecha: {
+                    required: true
+                },
+                hora: {
+                    required: true
+                },
+                boletos: {
+                    required: true
+                }
+            },
+            messages: {
+                nombre: {
+                    required: "Ingrese el nombre de la obra",
+                    minlength: "Minimo 3 caracteres"
+                },
+                multimedia: {
+                    required: "Ingrese la url"
+                },
+                descripcion: {
+                    required: "Ingrese su nombre",
+                    minlength: "Minimo 5 caracteres"
+                },
+                genero: {
+                    required: "Ingrese el genero"
+                },
+                autor: {
+                    required: "Ingrese el nombre del autor",
+                    minlength: "Minimo 5 caracteres"
+                },
+                fecha: {
+                    required: "Ingrese la fecha"
+                },
+                hora: {
+                    required: "Ingrese la hora"
+                },
+                lugar: {
+                    required: "Ingrese el lugar",
+                    minlength: "Minimo 5 caracteres"
+                }
+            }
+        });
+    });
+</script>

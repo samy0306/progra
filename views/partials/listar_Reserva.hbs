@@ -1,0 +1,142 @@
+
+<section id="banner" style="background: url(../img/reserva.jpg) center center !important;background-size:contain !important">
+    {{#if director}}
+    <div class="form-group row">
+        <div style="margin: 10px !important">
+            <form method='POST' action='/enviarCorreo'>
+                <button class="busqueda">
+                    Enviar Correos
+                </button>             
+            </form>         
+        </div>
+        <div  class=" col-sm-9" ></div>
+    </div>
+    <header>
+        <h2 style="color: white; font-weight: bold; font-size: 60px">
+            RESERVAS
+        </h2>
+    </header>   
+
+    <div id="divActualizar" class=" divButton" >
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 30px !important">Buscar:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="myInput"  onkeyup = "filtrarTabla()"  name="busqueda" style="background-color: rgba(255, 255, 255,.2);  text-align: left !important; color:white !important; font-weight: bold; font-size: 20px !important">
+<!--                <input type="text" id="myInput" onkeyup="filtrarTabla()" placeholder="Busqueda por Obra..">-->
+            </div>
+            <div >
+                <button class="busqueda">
+                    Buscar
+                </button>             
+
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <header>
+        <h2 style="color: white; font-weight: bold; font-size: 60px">
+            RESERVAS
+        </h2>
+    </header>   
+    {{/ if}}
+    <div class="container" style="color: white !important">
+
+        <br>
+        <br>
+        <table class="table" id="myTable">
+            <thead>
+                <tr class="header">   
+                    <th>Usuario</th>
+                    <th>Fechas Retiro Boletos</th>
+                    <th>Cant. Boletos</th>
+                    <th>Fecha de la Obra</th>
+                    <th>Obra</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each lista}} 
+                <tr>
+                    <td>{{persona}}</td>
+                    <td>{{fechasRetiroBoletos}}</td>
+                    <td>{{numBoletos}} </td>
+                    <td>{{fechaEstreno}} </td>
+                    <td>{{obra}} </td>
+                    {{#if ESdirector }}
+                    <td>
+                        {{#if estado}}
+                        <form action='/editEstado/{{external_id}}' method='POST' class="" >
+                            <div class="wrap-login100-form-btn">
+                                <button class="busqueda" id='{{@index}}' onsubmit="myFunction()">
+                                    Retirado
+                                </button>
+                            </div>
+                        </form>
+                        {{else}}
+                        <form action='/editEstado/{{external_id}}' method='POST' class="" >
+                            <div class="wrap-login100-form-btn">
+                                <button class="busqueda" id='{{@index}}' onsubmit="myFunction()">
+                                    Pendiente
+                                </button>
+                            </div>
+                        </form>
+                        {{/if}}
+                    </td>
+                    {{else}}
+                    <td>
+                        <a href="/editarReserva/{{external_id}}">
+                            <button class="busqueda">
+                                Editar
+                            </button>
+                        </a>
+                        <a href="/comprobantepdf/{{external_id}}">
+                            <button class="busqueda">
+                                Comprobante
+                            </button>
+                        </a>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/ each}} 
+            </tbody> 
+        </table>
+    </div>  
+</section>
+
+<script>
+    function filtrarTabla() {
+        // Declare variables 
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    function myFunction() {
+        $("#{{@index}}").click();
+        this.removeClass('estadoPendiente');
+        this.addClass('estadoPendiente');
+    }
+    function funcionEnter() {
+        var crit = document.getElementById("criterio").value;
+        alert('Usted esta buscando ' + crit);
+    }
+</script>  
+
+
+

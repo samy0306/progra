@@ -1,0 +1,88 @@
+<div class="ftco-animate">
+    <br><br><br> <br><br><br>
+    <h1 style="text-align: center">Fotos Telia</h1>
+    <p style="text-align: center; padding: 20px !important">A Continuacion podemos observar nuestra galeria donde  ...</p>
+    {{#if productor}} 
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <button type="button" class="btn btn-outline-secondary">Action</button>
+            <button type="button" id="Administrar" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">SOY IIOS</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" onclick="ingresar()">Ingresar Imagen</a>
+               
+            </div>
+        </div>
+    </div>
+    {{/ if}}
+
+    <br><br><br> 
+</div>
+<div id="contenedor" class="">   
+    <div id="divIngreso" class="hidden divButton" >
+        <form method='POST' action='/galeria/guardarMult' enctype="multipart/form-data">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Titulo</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="titulo" placeholder="Titulo" name="titulo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Descripcion</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Selecione Archivo</label>
+                <div class="col-sm-5 custom-file">
+                    <input type="file" class="custom-file-text" id="archivo" name="archivo">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <!--                <button type="button" class="btn btn-secondary">Cancelar</button>-->
+            </div>
+        </form>
+    </div>
+    <div id="divActualizar" class="hidden divButton" >
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Buscar</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="titulo" placeholder="Aqui va criterio de Busqueda" name="titulo">
+            </div>
+        </div>
+    </div>
+
+    <div id="galeriaDiv">
+        <section class="ftco-section-2">
+            <div class="photograhy">
+                <div class="row no-gutters">
+                    {{#each imagenes}}
+                    <div class="col-md-4 ftco-animate">
+                        <a href="{{archivo}}" class="photography-entry img image-popup d-flex justify-content-center align-items-center" style="background-image: url({{archivo}});">
+                            <div class="overlay"></div>
+                            <div class="text text-center">
+                                <h3>{{titulo}}</h3>
+                                <span class="tag">{{desc}}</span>
+                            </div>
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function ingresar() {
+        $('#divIngreso').removeClass('hidden')
+        $('#divActualizar').addClass('hidden')
+    }
+    function actualizar() {
+        $('#divActualizar').removeClass('hidden')
+        $('#divIngreso').addClass('hidden')
+    }
+</script>

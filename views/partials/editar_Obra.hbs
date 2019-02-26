@@ -1,0 +1,191 @@
+<section id="banner" style="background: url(../img/noticia.jpeg);background-size:contain !important">
+    <header>
+        <h2 style="color: black; font-weight: bold; font-size: 60px " id="hed">
+            Noticias TELIA</h2>
+    </header>
+    <div id="divIngreso" class="inner" style="width: 70% !important; margin-bottom: 80px !important" >
+        <header>
+            <h2 style="color: white; font-weight: bold">Modificar Obra</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/editarObra' enctype="multipart/form-data">
+            <input type="hidden" name="external" value="{{obr.external_id}}"/>
+            <input type="hidden" name="multActual" value="{{obr.multimedia}}"/>
+            <input type="hidden" name="idObra" value="{{obr.idObra}}"/>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-md-6 ">
+                    <div  class="wrap-input100 validate-input" data-validate=" Ingrese el link" >
+                        <span class="label-input100">Foto</span>
+                        <br>           
+                        <br>
+                        {{#if obr.esVideo}} 
+                        <div class="fotoObra"><iframe width="400" height="315" src="{{obr.multimedia}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                        {{else}} 
+                        <div class="imgNot" style=' padding: 0px !important; background: url("/{{obr.multimedia}}");background-size:cover!important; background-position: center center'>                       
+                        </div>
+                        {{/ if }} 
+                        <br>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Ingrese el genero">
+                        <br>
+                        <span class="label-input100">Género</span>
+                        <select class="combo" name="genero" id="genero">
+                            <option class="in2" value="Tragedia">Tragedia</option>
+                            <option class="in2" value="Comedia">Comedia</option>
+                            <option class="in2" value="Drama">Drama</option>
+                            <option class="in2" value="Tragicomedia">Tragicomedia</option>
+                            <option class="in2" value="Monologo">Monólogo</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese nombre del autor">
+                        <span class="label-input100">Autor</span>
+                        <input class="input100" type="text" name="autor"  value="{{obr.autor}}">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+                    <br>
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese nombre el lugar">
+                        <span class="label-input100">Precio Boleto</span>
+                        <input class="input100" type="text" name="precio" value="{{obr.precioBoleto}}">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-md-6 ">
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese el Titulo">
+                        <span class="label-input100">Titulo</span>
+                        <br>
+                        <input class="combo" type="text" name="titulo" value= '{{obr.nombre}}'>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese la descripcion" >
+                        <span class="label-input100" >Descripcion</span>
+                        <br>
+                        <textarea class="combo" name="descripcion"  rows="4" >{{obr.desc}}</textarea>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Ingrese la multimedia">
+                        <span class="label-input100">Cambiar Multimedia</span>
+                        <br>
+                        <select class="combo" name="multimedia" id="tipoMult" onchange="OnChange()">
+                            <option class="in2" value="3">-- Tipo de Multimedia --</option>
+                            <option class="in2" value='1'>Video</option>
+                            <option class="in2" value='0'>Imagen</option>
+
+                        </select>
+                    </div>
+                    <br>
+
+                    <div id= 'video' class="wrap-input100 validate-input hidden" data-validate=" Ingrese el link" >
+                        <span class="label-input100">Coloca el link del Video</span>
+                        <br>
+                        <input class="combo" type="url" name="video" placeholder="URL multimedia">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+                    <div data-validate=" Ingrese el link" class ='hidden' id='foto'>
+                        <label  for="archivo" class="lab" style="margin-left: 120px !important; margin: 0px;">
+                            <span>Agregar Foto</span>
+                            <input type="file" id="archivo" name="archivo" style="display:none" src ="/{{not.multimedia}}">
+                        </label>
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese la fecha">
+                        <span class="label-input100">Fecha Estreno</span>
+                        <br>
+                        <input class="combo" type="date"  name="fecha" aria-describedby="fechaHelp" value="{{obr.fechaEstreno}}">
+                    </div>
+
+                    <br>
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese la hora">
+                        <span class="label-input100">Hora</span>
+                        <br>
+                        <input type="time" class="combo" name="hora" aria-describedby="horaHelp" value="{{obr.horaEstreno}}">
+                    </div>
+
+                    <br>
+                    <div class="wrap-input100 validate-input" data-validate=" Ingrese nombre el lugar">
+                        <span class="label-input100">Lugar Estreno</span>
+                        <input class="input100" type="text" name="lugar" value='{{obr.lugarEstreno}}'>
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+                </div>
+
+            </div> 
+
+            <div class="flex-col-c p-t-30">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" >
+                        Actualizar
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript">
+    
+    $(function(){
+        $("#genero").val('{{obr.genero}}');
+    });
+
+    function ingresar() {
+        $('#divIngreso').removeClass('hidden');
+    }
+    function actualizar() {
+        $('#divIngreso').addClass('hidden');
+
+    }
+</script>
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                titulo: {
+                    required: true,
+                    minlength: 3
+                },
+                multimedia: {
+                    required: true
+                },
+                descripcion: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                titulo: {
+                    required: "Ingrese el nombre de la obra",
+                    minlength: "Minimo 3 caracteres"
+                },
+                multimedia: {
+                    required: "Ingrese la url"
+                },
+                descripcion: {
+                    required: "Ingrese su nombre",
+                    minlength: "Minimo 5 caracteres"
+                }
+            }
+        });
+    });
+
+
+    function OnChange() {
+        var tipo = $('#tipoMult').val();
+        if (tipo == 1) {
+            console.log('video');
+            $('#foto').addClass('hidden');
+            $('#video').removeClass('hidden');
+        } else if (tipo == 0) {
+            $('#foto').removeClass('hidden');
+            $('#video').addClass('hidden');
+        } else {
+            $('#foto').addClass('hidden');
+            $('#video').addClass('hidden');
+        }
+    }
+</script>

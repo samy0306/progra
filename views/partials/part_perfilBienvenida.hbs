@@ -1,0 +1,112 @@
+<!-- About Section -->
+<section id="banner" style="background: url(../img/usuarioPerfil.jpg);background-size: contain!important">
+    <div id="about2"  style='padding: 0px !important; margin-top:0px !important '>
+        <div class="container" style='padding: 0px !important'>
+            <div class="row" style='padding: 0px !important'>
+                <div class="col-xs-12 col-md-6">
+                    <div class="imgRedonda" style='padding: 0px !important; background: url({{multimedia}});background-size:cover!important; background-position: center center'>
+                    </div>
+                    <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/actualizarfotoUsuario' enctype="multipart/form-data">
+                        <input type="hidden" name="externalX" value="{{persona.external_id}}"/>    
+                        <div data-validate=" Ingrese el link" id='foto'>
+                            <div id="cambFoto">
+                                <label  for="archivo" class ='perf' id="perf">
+                                    <span>Cambiar Foto</span>
+                                    <input type="file" id="archivo" name="archivo" style="display:none">
+                                </label>
+                            </div>
+                            <br><br><br>
+                            <div class="hidden" id="actu">
+                                <button class="btn btn-danger" id="actual">
+                                    ACTUALIZAR
+                                </button>   
+                            </div>
+                            <br>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <h2  style='color:red;font-size: 40px;padding: 0px !important; margin-top:0px !important; font-family:  Book Antiqua, Palatino, serif'>TELIA te da la bienvenida </h2>
+                    <h2  style='color:red; font-size: 50px;padding: 0px !important; margin-top:0px !important; font-family: Palatino Linotype, Book Antiqua, Palatino, serif'>{{nombre}}</h2>
+                    <div class="inner" style='padding: 0px!important; padding: 50px!important; font-size: 30px; height: 380px; margin-top:40px !important '>
+                        <p>Es un gusto muy grande que formes parte de nuestro publico
+                            estamos para ayudarte e informarte de las actividades que tenemos, sólo visita los
+                            sitios hechos para ti.</p>
+                        <br><br>
+                        <p>Y no olvides que puedes pertenecer a TELIA, debes estar pendiente de las noticias, ahí publicamos los castings!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#fomulario" class="btn btn-custom btn-lg page-scroll">Mis Datos</a> 
+    </div>      
+    <br><br>
+    <br><br>
+
+    <div id="fomulario">
+        <div class="inner" style="width: 50% !important">
+            <form class="login100-form validate-form" id='fomr_RegistroX' method='POST' action='/actualizarUsuario'>
+                <header>
+                    <h2 style="color: white; font-weight: bold">Tus Datos</h2>
+                </header><br><br><br>
+                <div class="row">
+                    <input type="hidden" name="external" value="{{persona.external_id}}"/>
+                    <div class="col-xs-12 col-md-6">
+                        <div class="wrap-input100 ">
+                            <span class="label-input100">Cédula</span>
+                            <input class="combo" type="text" name="cedula" value="{{persona.cedula}}">
+                        </div><br>
+                        <div class="wrap-input100 ">
+                            <span class="label-input100">Nombre</span>
+                            <input class="combo" type="text" name="nombre" value="{{persona.nombre}}">
+                        </div><br>
+                        <div class="wrap-input100 ">
+                            <span class="label-input100">Apellido</span>
+                            <input class="combo" type="text" name="apellido" value="{{persona.apellido}}">
+                        </div><br>
+                        <br>
+                    </div>
+                    <div class="col-xs-12 col-md-6" >
+                        <div class="wrap-input100 validate-input" data-validate="Ingrese fecha nacimiento">
+                            <span class="label-input100">Fecha Nacimiento</span>
+                            <input class="combo" type="date" name="fechaNac"  value="{{persona.fecha_Nac}}">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div><br>
+                        <div class="wrap-input100 ">
+                            <span class="label-input100">Direccion</span>
+                            <input class="combo" type="text" name="direccion" value="{{persona.direccion}}">
+                        </div><br>
+
+                        <div class="wrap-input100 ">
+                            <span class="label-input100">Telefono</span>
+                            <input class="combo" type="text" name="telefono" value="{{persona.telefono}}" >
+                        </div><br>
+
+                        <br>
+                    </div>
+                </div>
+
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" type="submit">
+                        ACTUALIZAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('#perf').click(function () {
+        $('#actu').removeClass('hidden');
+        $('#cambFoto').addClass('hidden');
+    });
+
+    $('#actual').click(function () {
+        $('#actu').addClass('hidden');
+        $('#cambFoto').removeClass('hidden');
+    });
+</script>

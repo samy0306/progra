@@ -1,0 +1,16 @@
+{
+	"development":{
+		"username": "PortusN",
+		"password": "1234",
+		"database": "teatrodb",
+		"host": "localhost",
+		"dialect": "mysql"
+	},
+	"staging":{
+		"username": "root",
+		"password": "karla",
+		"database": "teatrodb",
+		"host": "localhost",
+		"dialect": "mysql"
+	}
+}

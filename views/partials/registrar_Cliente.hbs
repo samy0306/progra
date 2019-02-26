@@ -1,0 +1,148 @@
+<section id="banner" style="background: url(../img/introRU.jpg) center center !important;background-size:cover !important">
+    <div class="inner">
+        <header>
+            <h2 style="color: white; font-weight: bold">Registrate</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/registro/guardar'>
+            <!--            <% if (error  != '') { %>
+                        <div class="alert alert-danger">
+                            <%- error %>
+                        </div>
+                        <% } %>  -->
+            <div class="wrap-input100 validate-input m-b-23" data-validate = "Ingrese su cedula">
+                <span class="label-input100">Cedula</span>
+                <input class="input100" type="text" name="cedula" placeholder="cedula">
+                <span class="focus-input100" data-symbol="&#xf206;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese el Apellido">
+                <span class="label-input100">Apellidos</span>
+                <input class="input100" type="text" name="apellido" placeholder="apellidos">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate=" Ingrese el Nombre">
+                <span class="label-input100">Nombre</span>
+                <input class="input100" type="text" name="nombre" placeholder="nombre">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate=" Ingrese direccion">
+                <span class="label-input100">direccion</span>
+                <input class="input100" type="text" name="direccion" placeholder="direccion">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate=" ingrese el Correo">
+                <span class="label-input100">Correo</span>
+                <input class="input100" type="email" name="correo" placeholder="correo">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate=" ingrese la clave">
+                <span class="label-input100">Clave</span>
+                <input class="input100" type="password" name="clave" placeholder="clave">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese el telefono">
+                <span class="label-input100">Telefono</span>
+                <input class="input100" type="text" name="telefono" placeholder="telefono">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese fecha nacimiento">
+                <span class="label-input100">Fecha Nacimiento</span>
+                <input class="combo" type="date" name="fechaNac" placeholder="Fecha Nacimiento">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese su Sexo">
+                <span class="label-input100">Sexo</span>
+                <br>
+                <select class="combo" name="sexo" id="obrsexoa">
+                    <option class="in2" value="0">Mujer</option>
+                    <option class="in2" value="1">Hombre</option>
+
+                </select>
+            </div>
+            <div><input type="hidden" name="idrol" value="1"/>
+            </div>
+
+            <br>
+            <div class="flex-col-c p-t-30">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" >
+                        Registrar
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+</section>
+
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                cedula: {
+                    required: true,
+                    minlength: 10
+                },
+                apellidos: {
+                    required: true
+                },
+                nombre: {
+                    required: true
+                },
+                direccion: {
+                    required: true,
+                    minlength: 5
+                },
+                correo: {
+                    required: true,
+                    minlength: 10,
+                    email: true
+                },
+                clave: {
+                    required: true,
+                    minlength: 5
+                },
+                telefono: {
+                    required: true,
+                    minlength: 10
+                }
+            },
+            messages: {
+                cedula: {
+                    required: "Ingrese su cedula",
+                    minlength: "Minimo 10 caracteres"
+                },
+                apellidos: {
+                    required: "Ingrese su Apellido"
+                },
+                nombre: {
+                    required: "Ingrese su nombre"
+                },
+                direccion: {
+                    required: "Ingrese su direccion",
+                    minlength: "Minimo 5 caracteres"
+                },
+                correo: {
+                    required: "Ingrese su correo",
+                    minlength: "Minimo 10 caracteres"
+                },
+                clave: {
+                    required: "Ingrese su clave",
+                    minlength: "minimo 5 caracteres"
+                },
+                telefono: {
+                    required: "Ingrese su telefono",
+                    minlength: "Minimo 10 caracteres"
+                }
+            }
+        });
+    });
+</script>

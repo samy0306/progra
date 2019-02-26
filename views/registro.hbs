@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>{{{titulo}}}</title>        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/main.css" />
+        <link rel="stylesheet" type="text/css"  href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/nivo-lightbox/default.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
+        <link rel="stylesheet" type="text/css"  href="css/nav.css">
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <!-- Nav -->
+
+
+        {{#if esinicio}} 
+        {{> nav }}
+        {{> inicio_Sesion }}
+        {{/ if }} 
+
+        {{#if esregUsuario}} 
+        {{> nav }}
+        {{> registrar_Cliente }}
+        {{/ if }} 
+
+
+        {{#if esdirector}} 
+        {{> nav_Director }}
+        {{> registrar_Actor }}
+        {{/ if }} 
+
+        {{#if esactor}} 
+        {{> nav_Actor }}
+        {{> part_PerfilActor}}
+        {{/ if }} 
+
+        {{#if esAsistente}} 
+        {{> nav_Asistente }}
+        {{> registrar_Noticia }}
+        {{/ if }} 
+
+        {{#if esasistente}} 
+        {{> nav_Asistente }}
+        {{> registrar_Obra }}
+        {{/ if }} 
+
+        {{> footer  }}
+
+        <!-- Scripts -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/browser.min.js"></script>
+        <script src="/assets/js/breakpoints.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <!--        <script src="/assets/js/jquery_validation.js"></script>
+                <script src="/assets/js/utiles.js"></script>-->
+
+    </body>
+</html>
+

@@ -1,0 +1,60 @@
+
+<section id="banner" style="background: url(../img/obra_lista.jpg);background-size: contain  !important">
+    <header>
+        <h2 style="color: white; font-weight: bold; font-size: 60px">
+            Obras TELIA</h2>
+    </header>
+    <div class="container contObras">
+        <div class="row ">
+            {{#each lista}} 
+            <div class="col-xs-12 col-md-5 obra" style="background-color: rgba(0,0,0,.5)">
+                <div class='titulo'>{{nombre}}</div>
+                {{#if esVideo}} 
+                <div class="fotoObra"><iframe width="400" height="315" src="{{multimedia}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                {{else}} 
+                <div class="fotoObra"><img src="{{multimedia}}"></div>
+                {{/ if }} 
+                <div class="desc">
+                    <h3 >Descripcion:</h3>
+                    <p>{{desc}}</p>
+                    <h3>Género</h3>
+                    <p>{{genero}}</p>
+                    <h3>Estreno:</h3>
+                    <p>{{fechaEstreno}}</p>
+                </div>
+                <br><br>
+                {{#if ESasistente}}
+                <a   href="/editarObra/{{external_id}}" data-toggle="modal" data-target="#exampleModal_editar" data-whatever="@mdo" id="i" class="btn btn-info botonAbajo">Editar</a>
+                {{/ if}}
+            </div>
+
+            {{/ each}} 
+        </div>
+    </div>
+</section>
+
+
+
+<!--<table class="table">
+    <thead>
+        <tr>
+            <th>Nro</th><th>Nombre</th><th>Descripcion</th><th>Genero</th>
+            <th>Acciones</th><th>Fecha Estreno</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each lista}} 
+        <tr>
+            <td>{{idObra}}</td>
+            <td>{{nombre}}</td>
+            <td>{{desc}}</td>
+            <td>{{genero}}</td>
+            <td>{{fechaEstreno}}</td>
+            <td>
+                <a href="#" id="{{idObra}}" class="btn btn-primary" data-toggle="modal" data-target="#modal_e">Modificar</a>
+
+            </td>
+        </tr>
+        {{/ each}} 
+    </tbody> 
+</table>-->

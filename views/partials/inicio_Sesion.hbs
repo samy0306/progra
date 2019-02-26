@@ -1,0 +1,68 @@
+<section id="banner" style="background: url(img/incio_Sesion.jpg) center center !important;background-size:cover !important">
+    <div class="inner">
+        <header>
+            <h2 style="color: white; font-weight: bold">Inicio Sesión</h2>
+        </header>
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/inicioSesion/entrar'>
+            <!--            <% if (error  != '') { %>
+                        <div class="alert alert-danger">
+                            <%- error %>
+                        </div>
+                        <% } %>  -->
+
+            <div class="wrap-input100 validate-input" data-validate=" ingrese el Correo">
+                <span class="label-input100">Correo</span>
+                <input class="input100" type="email" name="correo" placeholder="correo">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="wrap-input100 validate-input" data-validate="Ingrese su clave">
+                <span class="label-input100">Clave</span>
+                <input class="input100" type="password" name="clave" placeholder="Clave">
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <br>
+            <div class="flex-col-c p-t-30">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <br>
+                    <button class="login100-form-btn" >
+                        Entrar
+                    </button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+
+</section>
+
+<script>
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                correo: {
+                    required: true,
+                    minlength: 10,
+                    email: true
+                },
+                clave: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                correo: {
+                    required: "Ingrese su correo",
+                    minlength: "Minimo 10 caracteres"
+                },
+                clave: {
+                    required: "Ingrese su clave",
+                    minlength: "minimo 5 caracteres"
+                }
+            }
+        });
+    });
+</script>
+

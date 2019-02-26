@@ -7,18 +7,17 @@ module.exports = function (sequelize, Sequelize) { //sequelize es objeto y Seque
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        usuario: {
-            type: Sequelize.STRING(10),
+        correo: {
+            type: Sequelize.STRING(60),
             allowNull: false,
             unique: true
         },
         clave: {
-            type: Sequelize.STRING(50),
-            allowNull: false,
-            unique: true
+            type: Sequelize.STRING
         },
         external_id: {
-            type: Sequelize.UUID
+            type: Sequelize.UUID,
+            defaultValue: Sequelize.UUIDV4
         }
     },
             {freezeTableName: true,

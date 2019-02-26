@@ -1,0 +1,74 @@
+<div class="overlay">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1 section-title">
+            <h2>Noticias TELIA</h2>
+            <hr>
+            <p>Las mejores noticias sobre la agrupacion TELIA haz click y comparte tu experiencia</p>
+        </div>
+        <div id="row"  >
+            <div class="col-md-4 team">
+                <div class="thumbnail" style="border: black 3px solid !important" >
+
+                    <div class="caption" >
+                        <h3 id="titulo">Titulo Noticia</h3>
+                        <p id="descripcion">Describe que paso en el evento.</p>
+                    </div>
+                    {{#if esnadie}} 
+                    <button type="button" class="btn btn-custom btn-lg page-scroll"  id="editar" data-toggle="modal" data-target="#exampleModalNoticia">
+                        Editar       
+                    </button>
+                    {{/ if }} 
+
+                </div>
+            </div>
+            <div class="modal fade"  id="exampleModalNoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle" style='text-align: center; color: black'><b>Editar Noticia</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <textarea name="texto1" id="titulo" class="form-control" rows="1">Titulo</textarea>
+                            <textarea name="texto1" id="texto1" class="form-control" rows="5">Descripcion</textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-custom btn-lg page-scroll" style='padding: 8px !important' data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-custom btn-lg page-scroll" style='padding: 8px !important' data-dismiss="modal" id="guardarN">Guardar</button>
+                        </div>
+                    </div>
+
+                    <script>
+//                            $("#editar").on("click", myFuncion)
+//
+//                            function myFuncion() {
+////                                $('#texto1').val($('#decripcion').text());
+////                            }
+//                        $("#guardarN").on("click", myFuncion)
+
+//                        function myFuncion() {
+////                                $('#descripcion').text($('#texto1').val());
+//                            var root = 'C:\Users\ASUS\Desktop\proyectoProgra\views\servicioNoticias';
+//
+//                            $.ajax({
+//                                url: root,
+//                                method: 'GET'
+//                            }).then(function (arrayColores) {
+//                                for (i = 0; i < arrayColores.leght; i++) {
+//                                    console.log(arrayColores[i].nombreColor);
+//                                }
+//                            });
+//                        }
+
+
+                    </script>
+                </div>
+            </div>    
+
+
+        </div>
+    </div>
+</div>

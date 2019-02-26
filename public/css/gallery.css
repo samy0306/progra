@@ -1,0 +1,15 @@
+.divButton{
+    padding: 30px !important;
+    height:50%;
+    margin: auto;
+    width:50%;
+}
+#galeriaDiv{
+    height:20%;
+    clear:both;
+}
+
+.boton{
+    width: 20%;
+    height: 505%;
+}

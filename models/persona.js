@@ -19,40 +19,45 @@ module.exports = function (sequelize, Sequelize) { //sequelize es objeto y Seque
             type: Sequelize.STRING(50)
         },
         direccion: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(150)
         },
         telefono: {
             type: Sequelize.STRING
         },
         fecha_Nac: {
-            type: Sequelize.DATE
+            type: Sequelize.DATEONLY
         },
-        correo: {
-            type: Sequelize.STRING
+        foto: {
+            type: Sequelize.STRING(150)
         },
         sexo: {
-            type: Sequelize.ENUM('M', 'F')
+            type: Sequelize.BOOLEAN
         },
         external_id: {
-            type: Sequelize.UUID
+            type: Sequelize.UUID,
+            defaultValue: Sequelize.UUIDV4
         }
     },
             {freezeTableName: true,
                 createdAt: 'fecha_registro',
                 updatedAt: 'fecha_modificacion'
             });
+
     Persona.belongsTo(Rol, {//en este modelo se aloja la llave principal de rol(clave foranea)
-        foreignKey: 'id_rol',
+        foreignKey: 'id_rol', //agregara el ide de rol en el modelo persona
         constraints: false
     });
 
     Persona.associate = function (models) {//indica que el primary key de este modelo sera llave foranea de  cuenta y actor
-        models.persona.hasMany(models.cuenta, {
+        models.persona.hasOne(models.cuenta, {
             foreignKey: 'id_persona'
         });
-        models.persona.hasMany(models.actor, {
-            foreignKey: 'id_actor'
+        models.persona.hasOne(models.actor, {
+            foreignKey: 'id_actor',
+            primaryKey: true
         });
     };
+
     return Persona;
+
 };

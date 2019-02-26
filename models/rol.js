@@ -5,9 +5,6 @@ module.exports = function (sequelize, Sequelize) {
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        external_id: {
-            type: Sequelize.UUID
-        },
         nombre: {
             type: Sequelize.STRING(20)
         }
@@ -17,7 +14,7 @@ module.exports = function (sequelize, Sequelize) {
                 freezeTableName: true
             });
     Rol.associate = function (models) {//indica que el primary key de este modelo sera llave foranea de  persona
-        models.rol.hasMany(models.persona, {
+        models.rol.hasOne(models.persona, {
             foreignKey: 'id_rol'
         });
     };

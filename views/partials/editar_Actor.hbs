@@ -1,0 +1,127 @@
+<section id="banner" style="background: url(../img/usuario_perfil1.jpg);background-size:contain !important">
+    <header>
+        <h2 style="color: black; font-weight: bold; font-size: 60px " id="hed">
+            Actores TELIA</h2>
+    </header>
+    <div class="inner" style="width: 50% !important">
+        <form class="login100-form validate-form" id='fomr_Registro' method='POST' action='/actualizarActor'>
+            <header>
+                <h2 style="color: white; font-weight: bold">Actualizar Actor</h2>
+            </header><br><br><br>
+            <div class="row">
+                <input type="hidden" name="external" value="{{persona.external_id}}"/>
+                <div class="col-xs-12 col-md-6">
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Cédula</span>
+                        <input class="combo" type="text" name="cedula" value="{{persona.cedula}}">
+                    </div><br>
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Nombre</span>
+                        <input class="combo" type="text" name="nombre" value="{{persona.nombre}}">
+                    </div><br>
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Apellido</span>
+                        <input class="combo" type="text" name="apellido" value="{{persona.apellido}}">
+                    </div><br>
+                    <br>
+                </div>
+                <div class="col-xs-12 col-md-6" >
+                    <div class="wrap-input100 validate-input" data-validate="Ingrese fecha nacimiento">
+                        <span class="label-input100">Fecha Nacimiento</span>
+                        <input class="combo" type="date" name="fechaNac"  value="{{persona.fecha_Nac}}">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div><br>
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Direccion</span>
+                        <input class="combo" type="text" name="direccion" value="{{persona.direccion}}">
+                    </div><br>
+
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Telefono</span>
+                        <input class="combo" type="text" name="telefono" value="{{persona.telefono}}" >
+                    </div><br>
+                    <div class="wrap-input100 ">
+                        <span class="label-input100">Años Experiencia</span>
+                        <input class="combo" type="text" name="añosExperiencia" value="{{actores.años_Exp}}" >
+                    </div>            
+
+                    <br>
+                </div>
+            </div>
+
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <br>
+                <button class="login100-form-btn" >
+                    ACTUALIZAR
+                </button>
+            </div>
+        </form>
+        <form class="login100-form validate-form" method='POST' action='/bajarCuenta'>
+            <input type="hidden" name="personX" value="{{persona.idPersona}}"/>
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <br>
+                <button class="login100-form-btn" >
+                    Borrar Cuenta
+                </button>
+            </div> 
+        </form>
+    </div>
+</section>
+
+
+
+<script>
+    $(function () {
+        $("#rol").val('{{actores.persona.id_rol}}');
+    });
+
+    var j = jQuery.noConflict();
+    j().ready(function () {
+        j("#fomr_Registro").validate({
+            rules: {
+                titulo: {
+                    required: true,
+                    minlength: 3
+                },
+                multimedia: {
+                    required: true
+                },
+                descripcion: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                titulo: {
+                    required: "Ingrese el nombre de la obra",
+                    minlength: "Minimo 3 caracteres"
+                },
+                multimedia: {
+                    required: "Ingrese la url"
+                },
+                descripcion: {
+                    required: "Ingrese su nombre",
+                    minlength: "Minimo 5 caracteres"
+                }
+            }
+        });
+    });
+
+
+    function OnChange() {
+        var tipo = $('#tipoMult').val();
+        if (tipo == 1) {
+            console.log('video');
+            $('#foto').addClass('hidden');
+            $('#video').removeClass('hidden');
+        } else if (tipo == 0) {
+            $('#foto').removeClass('hidden');
+            $('#video').addClass('hidden');
+        } else {
+            $('#foto').addClass('hidden');
+            $('#video').addClass('hidden');
+        }
+    }
+</script>
